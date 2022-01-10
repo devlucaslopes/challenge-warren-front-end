@@ -1,11 +1,12 @@
 import React from 'react'
 
 import { Layout } from './components/Layout'
+import { Transactions } from './components/Transactions'
 
 function App() {
   return (
     <Layout>
-      <div>desafio</div>
+      <Transactions />
     </Layout>
   )
 }
