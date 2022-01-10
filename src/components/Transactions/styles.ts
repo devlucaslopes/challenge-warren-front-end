@@ -3,7 +3,6 @@ import styled, { css } from 'styled-components'
 export const Table = styled.table`
   ${({ theme }) => css`
     width: 100%;
-    margin-top: ${theme.spacings.medium};
     border-collapse: collapse;
 
     thead {

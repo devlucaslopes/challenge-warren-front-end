@@ -5,8 +5,14 @@ import {
   GlobalStyleComponent
 } from 'styled-components'
 
-// eslint-disable-next-line @typescript-eslint/ban-types
-const GlobalStyles: GlobalStyleComponent<{}, DefaultTheme> = createGlobalStyle`
+import theme from './theme'
+
+type Theme = typeof theme
+
+const GlobalStyles: GlobalStyleComponent<
+  Theme,
+  DefaultTheme
+> = createGlobalStyle`
   * {
     margin: 0;
     padding: 0;
