@@ -24,6 +24,13 @@ export const Table = styled.table`
     tbody {
       tr {
         color: ${theme.colors.gray};
+        background-color: ${theme.colors['gray-light']};
+        cursor: pointer;
+        transition: filter 0.2s;
+
+        &:hover {
+          filter: brightness(0.8);
+        }
       }
 
       tr:nth-child(even) {
