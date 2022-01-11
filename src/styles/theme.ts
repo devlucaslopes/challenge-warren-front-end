@@ -31,5 +31,8 @@ export default {
     overlay: 30,
     modal: 40,
     alwaysOnTop: 50
+  },
+  border: {
+    radius: '0.8rem'
   }
 } as const

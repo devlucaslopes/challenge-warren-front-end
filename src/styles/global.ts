@@ -24,9 +24,14 @@ const GlobalStyles: GlobalStyleComponent<
     html {
       font-size: 62.5%;
     }
+
     body {
       font-family: ${theme.font.family};
       font-size: ${theme.font.sizes.medium};
+    }
+
+    button {
+      cursor: pointer;
     }
   `}
 `
