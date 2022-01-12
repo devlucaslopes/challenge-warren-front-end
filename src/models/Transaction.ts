@@ -9,6 +9,7 @@ export interface ITransaction {
   from: string
   id: string
   status: TransactionStatusProps
+  statusFormatted: string
   title: TransactionTitleProps
   to: string
 }

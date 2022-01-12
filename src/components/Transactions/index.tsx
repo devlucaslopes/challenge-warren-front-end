@@ -32,7 +32,7 @@ export const Transactions = ({ data }: TransactionsProps) => {
             <tr key={transaction.id} role="button" onClick={toggleModal}>
               <td>{transaction.title}</td>
               <td>{transaction.description}</td>
-              <td>{transaction.status}</td>
+              <td>{transaction.statusFormatted}</td>
               <td>{transaction.amount}</td>
             </tr>
           ))}

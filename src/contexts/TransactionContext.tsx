@@ -8,6 +8,7 @@ import React, {
 
 import { ITransaction } from '../models/Transaction'
 import { api } from '../services/api'
+import STATUS from '../utils/status'
 
 type HandleFilterProps = {
   term: string
@@ -33,9 +34,20 @@ export function TransactionProvider({ children }: TransactionProviderProps) {
   >([])
 
   useEffect(() => {
-    api.get('/').then(({ data }) => {
-      setTransactions(data)
-      setFilteredTransactions(data)
+    api.get<ITransaction[]>('/').then(({ data }) => {
+      const formatted = data.map((transaction) => {
+        const [{ label }] = STATUS.filter(
+          ({ value }) => value === transaction.status
+        )
+
+        return {
+          ...transaction,
+          statusFormatted: label
+        }
+      })
+
+      setTransactions(formatted)
+      setFilteredTransactions(formatted)
     })
   }, [])
 

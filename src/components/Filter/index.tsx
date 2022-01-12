@@ -1,22 +1,9 @@
 import React, { FormEvent, useState } from 'react'
+
 import { useTransaction } from '../../contexts/TransactionContext'
+import STATUS from '../../utils/status'
 
 import * as S from './styles'
-
-const STATUS = [
-  {
-    value: 'created',
-    label: 'Solicitada'
-  },
-  {
-    value: 'processing',
-    label: 'Processando'
-  },
-  {
-    value: 'processed',
-    label: 'Concluída'
-  }
-]
 
 export const Filter = () => {
   const { handleFilter } = useTransaction()
