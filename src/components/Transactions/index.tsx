@@ -1,9 +1,15 @@
 import React, { useState } from 'react'
+
+import { ITransaction } from '../../models/Transaction'
 import { Modal } from '../Modal'
 
 import * as S from './styles'
 
-export const Transactions = () => {
+export type TransactionsProps = {
+  data: ITransaction[]
+}
+
+export const Transactions = ({ data }: TransactionsProps) => {
   const [modalIsOpen, setModalIsOpen] = useState(false)
 
   const toggleModal = () => {
@@ -22,24 +28,14 @@ export const Transactions = () => {
           </tr>
         </thead>
         <tbody>
-          <tr role="button" onClick={toggleModal}>
-            <td>Resgate</td>
-            <td>Carteira 1 para 2</td>
-            <td>Solicitada</td>
-            <td>R$ 1000</td>
-          </tr>
-          <tr role="button" onClick={toggleModal}>
-            <td>Resgate</td>
-            <td>Carteira 1 para 2</td>
-            <td>Solicitada</td>
-            <td>R$ 1000</td>
-          </tr>
-          <tr role="button" onClick={toggleModal}>
-            <td>Resgate</td>
-            <td>Carteira 1 para 2</td>
-            <td>Solicitada</td>
-            <td>R$ 1000</td>
-          </tr>
+          {data.map((transaction) => (
+            <tr key={transaction.id} role="button" onClick={toggleModal}>
+              <td>{transaction.title}</td>
+              <td>{transaction.description}</td>
+              <td>{transaction.status}</td>
+              <td>{transaction.amount}</td>
+            </tr>
+          ))}
         </tbody>
       </S.Table>
 
