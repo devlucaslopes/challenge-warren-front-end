@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useTransaction } from '../../contexts/TransactionContext'
 
 import { ITransaction } from '../../models/Transaction'
 import { Modal } from '../Modal'
@@ -10,10 +11,19 @@ export type TransactionsProps = {
 }
 
 export const Transactions = ({ data }: TransactionsProps) => {
-  const [modalIsOpen, setModalIsOpen] = useState(false)
+  const { toggleModal, findTransactionById } = useTransaction()
 
-  const toggleModal = () => {
-    setModalIsOpen((prev) => !prev)
+  const [selectedTransaction, setSelectedTransaction] = useState<ITransaction>(
+    {} as ITransaction
+  )
+
+  const showTransactionDetails = (id: string) => {
+    const transaction = findTransactionById(id)
+
+    if (!transaction) return
+
+    setSelectedTransaction(transaction)
+    toggleModal()
   }
 
   return (
@@ -29,7 +39,11 @@ export const Transactions = ({ data }: TransactionsProps) => {
         </thead>
         <tbody>
           {data.map((transaction) => (
-            <tr key={transaction.id} role="button" onClick={toggleModal}>
+            <tr
+              key={transaction.id}
+              role="button"
+              onClick={() => showTransactionDetails(transaction.id)}
+            >
               <td>{transaction.title}</td>
               <td>{transaction.description}</td>
               <td>{transaction.statusFormatted}</td>
@@ -39,7 +53,7 @@ export const Transactions = ({ data }: TransactionsProps) => {
         </tbody>
       </S.Table>
 
-      <Modal isOpen={modalIsOpen} onClose={toggleModal} />
+      <Modal transaction={selectedTransaction} />
     </>
   )
 }

@@ -22,7 +22,10 @@ type TransactionProviderProps = {
 type TransactionContextProps = {
   transactions: ITransaction[]
   filteredTransactions: ITransaction[]
+  modalIsOpen: boolean
   handleFilter: (data: HandleFilterProps) => void
+  toggleModal: () => void
+  findTransactionById: (id: string) => ITransaction | undefined
 }
 
 export const TransactionContext = createContext({} as TransactionContextProps)
@@ -32,6 +35,7 @@ export function TransactionProvider({ children }: TransactionProviderProps) {
   const [filteredTransactions, setFilteredTransactions] = useState<
     ITransaction[]
   >([])
+  const [modalIsOpen, setModalIsOpen] = useState(true)
 
   useEffect(() => {
     api.get<ITransaction[]>('/').then(({ data }) => {
@@ -73,9 +77,21 @@ export function TransactionProvider({ children }: TransactionProviderProps) {
     setFilteredTransactions(filtered)
   }
 
+  const toggleModal = () => setModalIsOpen((prev) => !prev)
+
+  const findTransactionById = (id: string) =>
+    transactions.find((transaction) => transaction.id === id)
+
   return (
     <TransactionContext.Provider
-      value={{ transactions, filteredTransactions, handleFilter }}
+      value={{
+        transactions,
+        filteredTransactions,
+        handleFilter,
+        toggleModal,
+        modalIsOpen,
+        findTransactionById
+      }}
     >
       {children}
     </TransactionContext.Provider>
