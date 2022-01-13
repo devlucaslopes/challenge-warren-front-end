@@ -33,6 +33,11 @@ export const Filter = () => {
           </option>
         ))}
       </select>
+
+      <select name="" id="">
+        <option value="">Ordenar por</option>
+      </select>
+
       <button type="submit">Filtrar</button>
     </S.Form>
   )
