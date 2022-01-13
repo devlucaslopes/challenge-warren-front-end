@@ -4,6 +4,7 @@ type TransactionTitleProps = 'Resgate' | 'Depósito' | 'Movimentação interna'
 
 export interface ITransaction {
   amount: number
+  amountFormatted: string
   date: string
   description: string
   from: string

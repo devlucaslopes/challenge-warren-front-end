@@ -33,7 +33,7 @@ export const Transactions = ({ data }: TransactionsProps) => {
               <td>{transaction.title}</td>
               <td>{transaction.description}</td>
               <td>{transaction.statusFormatted}</td>
-              <td>{transaction.amount}</td>
+              <td>{transaction.amountFormatted}</td>
             </tr>
           ))}
         </tbody>

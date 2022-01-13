@@ -8,7 +8,7 @@ import React, {
 
 import { ITransaction } from '../models/Transaction'
 import { api } from '../services/api'
-import STATUS from '../utils/status'
+import { formatAmount, formatStatus } from '../utils/formatter'
 
 type HandleFilterProps = {
   term: string
@@ -36,13 +36,10 @@ export function TransactionProvider({ children }: TransactionProviderProps) {
   useEffect(() => {
     api.get<ITransaction[]>('/').then(({ data }) => {
       const formatted = data.map((transaction) => {
-        const [{ label }] = STATUS.filter(
-          ({ value }) => value === transaction.status
-        )
-
         return {
           ...transaction,
-          statusFormatted: label
+          statusFormatted: formatStatus(transaction.status),
+          amountFormatted: formatAmount(transaction.amount)
         }
       })
 
