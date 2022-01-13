@@ -3,6 +3,7 @@ import { FiX as IconClose } from 'react-icons/fi'
 import { useTransaction } from '../../contexts/TransactionContext'
 
 import { ITransaction } from '../../models/Transaction'
+import { StatusBar } from '../StatusBar'
 
 import * as S from './styles'
 
@@ -21,7 +22,7 @@ export const Modal = ({ transaction }: ModalProps) => {
         </S.CloseButton>
 
         <S.Title>{transaction.title}</S.Title>
-        {/* BARRA DE PROGRESSO */}
+        <StatusBar status={transaction.status} />
         <S.Content>dadasdasdasdasos</S.Content>
       </S.Dialog>
     </S.Wrapper>

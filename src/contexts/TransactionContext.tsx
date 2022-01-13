@@ -35,7 +35,7 @@ export function TransactionProvider({ children }: TransactionProviderProps) {
   const [filteredTransactions, setFilteredTransactions] = useState<
     ITransaction[]
   >([])
-  const [modalIsOpen, setModalIsOpen] = useState(true)
+  const [modalIsOpen, setModalIsOpen] = useState(false)
 
   useEffect(() => {
     api.get<ITransaction[]>('/').then(({ data }) => {
