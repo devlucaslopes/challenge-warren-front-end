@@ -22,8 +22,22 @@ export const Modal = ({ transaction }: ModalProps) => {
         </S.CloseButton>
 
         <S.Title>{transaction.title}</S.Title>
+
         <StatusBar status={transaction.status} />
-        <S.Content>dadasdasdasdasos</S.Content>
+
+        <S.Content>
+          <S.Title>Transferindo de</S.Title>
+          <S.Description>
+            <p>{transaction.from}</p>
+            <p>{transaction.amountFormatted}</p>
+          </S.Description>
+
+          <S.Title>Para</S.Title>
+          <S.Description>
+            <p>{transaction.to}</p>
+            <p>{transaction.amountFormatted}</p>
+          </S.Description>
+        </S.Content>
       </S.Dialog>
     </S.Wrapper>
   )
