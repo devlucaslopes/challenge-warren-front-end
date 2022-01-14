@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components'
+import media from 'styled-media-query'
 
 export const Table = styled.table`
   ${({ theme }) => css`
@@ -37,5 +38,24 @@ export const Table = styled.table`
         background-color: ${theme.colors['gray-medium']};
       }
     }
+
+    ${media.lessThan('medium')`
+      th,
+      td {
+        padding: 0.8rem;
+      }
+    `}
+
+    ${media.lessThan('huge')`
+      thead {
+        th {
+          font-size: ${theme.font.sizes.small};
+        }
+      }
+
+      tbody {
+        font-size: ${theme.font.sizes.small};
+      }
+    `}
   `}
 `

@@ -1,4 +1,5 @@
-import styled, { css, DefaultTheme } from 'styled-components'
+import styled, { css } from 'styled-components'
+import media from 'styled-media-query'
 
 type WrapperProps = {
   isVisible: boolean
@@ -15,6 +16,10 @@ export const Wrapper = styled.div<WrapperProps>`
     display: ${isVisible ? 'flex' : 'none'};
     align-items: center;
     z-index: ${theme.layers.modal};
+
+    ${media.lessThan('large')`
+      padding: 0 ${theme.spacings.xsmall};
+    `}
   `}
 `
 
@@ -31,6 +36,10 @@ export const Dialog = styled.dialog`
 export const Title = styled.h2`
   ${({ theme }) => css`
     color: ${theme.colors.gray};
+
+    ${media.lessThan('large')`
+      font-size: ${theme.font.sizes.medium};
+    `}
   `}
 `
 
@@ -42,6 +51,10 @@ export const Description = styled.div`
     justify-content: space-between;
     margin: 0.5rem 0 1.6rem 0;
     position: relative;
+
+    ${media.lessThan('large')`
+      font-size: ${theme.font.sizes.small};
+    `}
 
     &:after {
       content: '';

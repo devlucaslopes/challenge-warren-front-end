@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components'
+import media from 'styled-media-query'
 
 export const Wrapper = styled.div`
   ${({ theme }) => css`
@@ -11,6 +12,10 @@ export const Bar = styled.div`
     width: 100%;
     height: ${theme.spacings.medium};
     background-color: ${theme.colors['gray-light']};
+
+    ${media.lessThan('large')`
+      height: ${theme.spacings.small};
+    `}
   `}
 `
 
@@ -36,6 +41,15 @@ export const FilledBar = styled.div<FilledBarProps>`
       right: -2rem;
       top: -0.5rem;
     }
+
+    ${media.lessThan('large')`
+      height: ${theme.spacings.small};
+
+      &:after {
+        width: ${theme.spacings.medium};
+        height: ${theme.spacings.medium};
+      }
+    `}
   `}
 `
 
@@ -48,5 +62,11 @@ export const Checkpoints = styled.div`
     span {
       font-size: ${theme.font.sizes.large};
     }
+
+    ${media.lessThan('large')`
+      span {
+        font-size: ${theme.font.sizes.medium};
+      }
+    `}
   `}
 `

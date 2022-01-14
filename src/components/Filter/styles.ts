@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components'
+import media from 'styled-media-query'
 
 export const Form = styled.form`
   ${({ theme }) => css`
@@ -32,5 +33,17 @@ export const Form = styled.form`
       color: ${theme.colors.white};
       text-transform: uppercase;
     }
+
+    ${media.lessThan('medium')`
+      flex-direction: column;
+
+      input {
+        width: 100%;
+      }
+
+      button {
+        height: ${theme.spacings.medium};
+      }
+    `}
   `}
 `

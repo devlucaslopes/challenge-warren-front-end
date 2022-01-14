@@ -1,8 +1,13 @@
 import styled, { css } from 'styled-components'
+import media from 'styled-media-query'
 
 export const Section = styled.section`
   ${({ theme }) => css`
     margin: ${theme.spacings.medium} 0;
+
+    ${media.lessThan('huge')`
+      padding: 0 ${theme.spacings.xsmall};
+    `}
   `}
 `
 
