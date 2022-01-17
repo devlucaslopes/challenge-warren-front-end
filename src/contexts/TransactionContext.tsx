@@ -10,7 +10,7 @@ import { ITransaction } from '../models/Transaction'
 import { api } from '../services/api'
 import { formatAmount, formatStatus } from '../utils/formatter'
 
-type HandleFilterProps = {
+export type HandleFilterProps = {
   term: string
   status: string
 }
