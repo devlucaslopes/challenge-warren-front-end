@@ -40,6 +40,7 @@ export const Transactions = ({ data }: TransactionsProps) => {
         <tbody>
           {data.map((transaction) => (
             <tr
+              data-testid={`transaction-row-${transaction.id}`}
               key={transaction.id}
               role="button"
               onClick={() => showTransactionDetails(transaction.id)}

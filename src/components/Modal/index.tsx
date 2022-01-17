@@ -17,7 +17,7 @@ export const Modal = ({ transaction }: ModalProps) => {
   return (
     <S.Wrapper isVisible={isOpen}>
       <S.Dialog open={isOpen}>
-        <S.CloseButton onClick={onClose}>
+        <S.CloseButton onClick={onClose} title="close dialog">
           <IconClose size={18} />
         </S.CloseButton>
 
