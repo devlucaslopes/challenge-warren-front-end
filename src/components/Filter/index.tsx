@@ -23,6 +23,7 @@ export const Filter = () => {
         type="text"
         placeholder="Pesquise pelo título da transação"
         onChange={(e) => setTerm(e.target.value)}
+        value={term}
       />
 
       <select onChange={(e) => setStatus(e.target.value)}>

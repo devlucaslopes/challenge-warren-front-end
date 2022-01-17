@@ -19,7 +19,7 @@ type TransactionProviderProps = {
   children: ReactNode
 }
 
-type TransactionContextProps = {
+export type TransactionContextProps = {
   transactions: ITransaction[]
   filteredTransactions: ITransaction[]
   modalIsOpen: boolean
