@@ -3,7 +3,7 @@ import React from 'react'
 import * as S from './styles'
 
 export const Header = () => (
-  <S.Header>
+  <S.Header data-testid="header">
     <S.Wrapper>
       <S.Logo
         width="92"
