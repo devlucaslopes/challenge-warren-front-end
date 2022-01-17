@@ -31,7 +31,7 @@ export const mockContext: TransactionContextProps = {
 
 export const renderWithTheme = (
   children: React.ReactNode,
-  customContext: CustomContextProps
+  customContext?: CustomContextProps
 ) => {
   return render(
     <TransactionContext.Provider value={{ ...mockContext, ...customContext }}>

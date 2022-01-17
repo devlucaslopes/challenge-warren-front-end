@@ -36,7 +36,7 @@ describe('<Modal />', () => {
     expect(screen.getByRole('button')).toBeInTheDocument()
   })
 
-  fit('should close modal if button "X" is clicked', async () => {
+  it('should close modal if button "X" is clicked', async () => {
     renderWithTheme(<Modal transaction={TRANSACTION} />, { modalIsOpen: true })
 
     await waitFor(() => userEvent.click(screen.getByRole('button')))
