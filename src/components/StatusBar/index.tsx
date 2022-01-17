@@ -22,7 +22,10 @@ export const StatusBar = ({ status }: StatusBarProps) => {
   return (
     <S.Wrapper>
       <S.Bar>
-        <S.FilledBar percentageFilled={percentageFilled} />
+        <S.FilledBar
+          percentageFilled={percentageFilled}
+          data-testid="filled-bar"
+        />
       </S.Bar>
       <S.Checkpoints>
         <span>Solicitada</span>
