@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 import media from 'styled-media-query'
 
-export const Section = styled.section`
+export const Wrapper = styled.section`
   ${({ theme }) => css`
     margin: ${theme.spacings.medium} 0;
 

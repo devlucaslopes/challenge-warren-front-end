@@ -1,6 +1,6 @@
 import React from 'react'
 
-import * as S from './styles'
+import { Wrapper, Title } from './styles'
 
 type SectionProps = {
   children: React.ReactNode
@@ -8,8 +8,8 @@ type SectionProps = {
 }
 
 export const Section = ({ children, title }: SectionProps) => (
-  <S.Section>
-    {title && <S.Title>{title}</S.Title>}
+  <Wrapper>
+    {title && <Title>{title}</Title>}
     {children}
-  </S.Section>
+  </Wrapper>
 )

@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 import media from 'styled-media-query'
 
-export const Header = styled.header`
+export const Wrapper = styled.header`
   ${({ theme }) => css`
     background-color: ${theme.colors.primary};
     padding: ${theme.spacings.xsmall} 0;
@@ -12,7 +12,7 @@ export const Header = styled.header`
   `}
 `
 
-export const Wrapper = styled.div`
+export const Content = styled.div`
   ${({ theme }) => css`
     max-width: ${theme.grid.container};
     margin: 0 auto;

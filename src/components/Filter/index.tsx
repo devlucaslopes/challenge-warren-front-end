@@ -3,7 +3,7 @@ import React, { FormEvent, useState } from 'react'
 import { useTransaction } from '../../contexts/TransactionContext'
 import STATUS from '../../utils/status'
 
-import * as S from './styles'
+import { Form } from './styles'
 
 export const Filter = () => {
   const { handleFilter } = useTransaction()
@@ -18,7 +18,7 @@ export const Filter = () => {
   }
 
   return (
-    <S.Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit}>
       <input
         type="text"
         placeholder="Pesquise pelo título da transação"
@@ -36,6 +36,6 @@ export const Filter = () => {
       </select>
 
       <button type="submit">Filtrar</button>
-    </S.Form>
+    </Form>
   )
 }

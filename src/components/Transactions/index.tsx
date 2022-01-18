@@ -4,7 +4,7 @@ import { useTransaction } from '../../contexts/TransactionContext'
 import { ITransaction } from '../../models/Transaction'
 import { Modal } from '../Modal'
 
-import * as S from './styles'
+import { Table } from './styles'
 
 export const Transactions = () => {
   const { toggleModal, findTransactionById, filteredTransactions } =
@@ -25,7 +25,7 @@ export const Transactions = () => {
 
   return (
     <>
-      <S.Table>
+      <Table>
         <thead>
           <tr>
             <th>Título</th>
@@ -49,7 +49,7 @@ export const Transactions = () => {
             </tr>
           ))}
         </tbody>
-      </S.Table>
+      </Table>
 
       <Modal transaction={selectedTransaction} />
     </>

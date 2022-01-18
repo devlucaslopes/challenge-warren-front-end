@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-import * as S from './styles'
+import { Wrapper, Bar, FilledBar, Checkpoints } from './styles'
 
 type StatusBarProps = {
   status: string
@@ -20,18 +20,18 @@ export const StatusBar = ({ status }: StatusBarProps) => {
   }, [status])
 
   return (
-    <S.Wrapper>
-      <S.Bar>
-        <S.FilledBar
+    <Wrapper>
+      <Bar>
+        <FilledBar
           percentageFilled={percentageFilled}
           data-testid="filled-bar"
         />
-      </S.Bar>
-      <S.Checkpoints>
+      </Bar>
+      <Checkpoints>
         <span>Solicitada</span>
         <span>Processando</span>
         <span>Concluída</span>
-      </S.Checkpoints>
-    </S.Wrapper>
+      </Checkpoints>
+    </Wrapper>
   )
 }

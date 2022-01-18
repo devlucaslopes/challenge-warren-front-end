@@ -5,7 +5,14 @@ import { useTransaction } from '../../contexts/TransactionContext'
 import { ITransaction } from '../../models/Transaction'
 import { StatusBar } from '../StatusBar'
 
-import * as S from './styles'
+import {
+  Wrapper,
+  Dialog,
+  CloseButton,
+  Title,
+  Content,
+  Description
+} from './styles'
 
 export type ModalProps = {
   transaction: ITransaction
@@ -15,30 +22,30 @@ export const Modal = ({ transaction }: ModalProps) => {
   const { modalIsOpen: isOpen, toggleModal: onClose } = useTransaction()
 
   return (
-    <S.Wrapper isVisible={isOpen}>
-      <S.Dialog open={isOpen}>
-        <S.CloseButton onClick={onClose} title="close dialog">
+    <Wrapper isVisible={isOpen}>
+      <Dialog open={isOpen}>
+        <CloseButton onClick={onClose} title="close dialog">
           <IconClose size={18} />
-        </S.CloseButton>
+        </CloseButton>
 
-        <S.Title>{transaction.title}</S.Title>
+        <Title>{transaction.title}</Title>
 
         <StatusBar status={transaction.status} />
 
-        <S.Content>
-          <S.Title>Transferindo de</S.Title>
-          <S.Description>
+        <Content>
+          <Title>Transferindo de</Title>
+          <Description>
             <p>{transaction.from}</p>
             <p>{transaction.amountFormatted}</p>
-          </S.Description>
+          </Description>
 
-          <S.Title>Para</S.Title>
-          <S.Description>
+          <Title>Para</Title>
+          <Description>
             <p>{transaction.to}</p>
             <p>{transaction.amountFormatted}</p>
-          </S.Description>
-        </S.Content>
-      </S.Dialog>
-    </S.Wrapper>
+          </Description>
+        </Content>
+      </Dialog>
+    </Wrapper>
   )
 }
