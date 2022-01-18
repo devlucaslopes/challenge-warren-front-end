@@ -47,7 +47,7 @@ const TRANSACTIONS: ITransaction[] = [
 
 describe('<Transactions />', () => {
   it('should render table with 3 rows', () => {
-    renderWithTheme(<Transactions data={TRANSACTIONS} />)
+    renderWithTheme(<Transactions />, { filteredTransactions: TRANSACTIONS })
 
     expect(screen.getAllByRole('button')).toHaveLength(3)
     expect(screen.getByText(TRANSACTIONS[0].title)).toBeInTheDocument()
@@ -58,7 +58,8 @@ describe('<Transactions />', () => {
   it('should calls findTransactionById() and toggleModal() when button is clicked', () => {
     const findTransactionById = jest.fn(() => TRANSACTIONS[0])
 
-    renderWithTheme(<Transactions data={TRANSACTIONS} />, {
+    renderWithTheme(<Transactions />, {
+      filteredTransactions: TRANSACTIONS,
       findTransactionById
     })
 

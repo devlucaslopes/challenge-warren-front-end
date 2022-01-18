@@ -1,24 +1,31 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
+import { ThemeProvider } from 'styled-components'
+
+import { TransactionProvider } from './contexts/TransactionContext'
 
 import { Layout } from './components/Layout'
 import { Filter } from './components/Filter'
 import { Transactions } from './components/Transactions'
 import { Section } from './components/Section'
 
-import { useTransaction } from './contexts/TransactionContext'
+import GlobalStyles from './styles/global'
+import theme from './styles/theme'
 
 function App() {
-  const { filteredTransactions } = useTransaction()
-
   return (
-    <Layout>
-      <Section>
-        <Filter />
-      </Section>
-      <Section title="Lista de transações">
-        <Transactions data={filteredTransactions} />
-      </Section>
-    </Layout>
+    <TransactionProvider>
+      <ThemeProvider theme={theme}>
+        <GlobalStyles {...theme} />
+        <Layout>
+          <Section>
+            <Filter />
+          </Section>
+          <Section title="Lista de transações">
+            <Transactions />
+          </Section>
+        </Layout>
+      </ThemeProvider>
+    </TransactionProvider>
   )
 }
 

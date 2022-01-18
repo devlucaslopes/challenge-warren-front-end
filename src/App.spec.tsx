@@ -1,14 +1,11 @@
 import React from 'react'
 import { render, screen, waitFor } from '@testing-library/react'
 import MockAdapter from 'axios-mock-adapter'
+import userEvent from '@testing-library/user-event'
+
+import { api } from './services/api'
 
 import App from './App'
-import { ThemeProvider } from 'styled-components'
-import theme from './styles/theme'
-import GlobalStyles from './styles/global'
-import { TransactionProvider } from './contexts/TransactionContext'
-import { api } from './services/api'
-import userEvent from '@testing-library/user-event'
 
 const DATA = [
   {
@@ -45,32 +42,19 @@ const DATA = [
 
 const mockApi = new MockAdapter(api)
 
-const renderApp = async () => {
-  return await waitFor(() =>
-    render(
-      <TransactionProvider>
-        <ThemeProvider theme={theme}>
-          <GlobalStyles {...theme} />
-          <App />
-        </ThemeProvider>
-      </TransactionProvider>
-    )
-  )
-}
-
 describe('<App />', () => {
   beforeEach(() => mockApi.onGet('').reply(200, DATA))
 
   afterEach(() => mockApi.reset())
 
   it('should render correctly', async () => {
-    await renderApp()
+    await waitFor(() => render(<App />))
 
     expect(screen.getAllByTestId(/transaction-row*/)).toHaveLength(3)
   })
 
   it('should toggle dialog when row and button "X" is clicked', async () => {
-    await renderApp()
+    await waitFor(() => render(<App />))
 
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
 
@@ -86,7 +70,7 @@ describe('<App />', () => {
   })
 
   it('should filter transactions by title', async () => {
-    await renderApp()
+    await waitFor(() => render(<App />))
 
     expect(screen.getAllByTestId(/transaction-row*/)).toHaveLength(3)
 
@@ -97,7 +81,7 @@ describe('<App />', () => {
   })
 
   it('should reset transactions when title is cleared', async () => {
-    await renderApp()
+    await waitFor(() => render(<App />))
 
     const input = screen.getByRole('textbox')
     const button = screen.getByRole('button', { name: /filtrar/i })
@@ -114,7 +98,7 @@ describe('<App />', () => {
   })
 
   it('should filter transactions by status', async () => {
-    await renderApp()
+    await waitFor(() => render(<App />))
 
     userEvent.selectOptions(screen.getByRole('combobox'), ['processed'])
     userEvent.click(screen.getByRole('button', { name: /filtrar/i }))
@@ -123,7 +107,7 @@ describe('<App />', () => {
   })
 
   it('should filter transactions by title and status', async () => {
-    await renderApp()
+    await waitFor(() => render(<App />))
 
     userEvent.type(screen.getByRole('textbox'), 'Movimentação interna')
     userEvent.selectOptions(screen.getByRole('combobox'), ['processed'])

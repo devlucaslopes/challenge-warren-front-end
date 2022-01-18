@@ -6,12 +6,9 @@ import { Modal } from '../Modal'
 
 import * as S from './styles'
 
-export type TransactionsProps = {
-  data: ITransaction[]
-}
-
-export const Transactions = ({ data }: TransactionsProps) => {
-  const { toggleModal, findTransactionById } = useTransaction()
+export const Transactions = () => {
+  const { toggleModal, findTransactionById, filteredTransactions } =
+    useTransaction()
 
   const [selectedTransaction, setSelectedTransaction] = useState<ITransaction>(
     {} as ITransaction
@@ -38,7 +35,7 @@ export const Transactions = ({ data }: TransactionsProps) => {
           </tr>
         </thead>
         <tbody>
-          {data.map((transaction) => (
+          {filteredTransactions.map((transaction) => (
             <tr
               data-testid={`transaction-row-${transaction.id}`}
               key={transaction.id}
